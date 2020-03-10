@@ -150,16 +150,36 @@ function isitaBST(tree){
     return true
 }
 
-//##7
+//##7 O(n)
 function thirdlargestnode(tree){
-    let granparentright =tree;
-    let parent =tree;
-    let child=tree;
-    while(child){
-
-  
-    };
+    if (!tree.right.right.right) {
+        return tree;
+    }
+    return thirdlargestnode(tree.right);
 }
+//##8
+//tree where no 2 leaves differ in distance from the root by more than 1)
+// 8
+function checkBalance(tree,height=1){
+    if(height>=2){
+        return false
+    }
+    if(tree.right&&tree.left){
+        checkBalance(tree.right)
+        checkBalance(tree.left)  
+    }
+    if(!tree.left){
+        height++;
+        return checkBalance(tree.right,height)  
+    }
+    if(!tree.right){
+        height++;
+        return checkBalance(tree.left,height)
+    }
+    return true
+}
+//##9
+//function checkIdentical(tree1,tree2){}
 
 
 
