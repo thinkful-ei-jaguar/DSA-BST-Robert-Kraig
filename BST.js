@@ -114,7 +114,7 @@ class BinarySearchTree{
 //return everything in order
 //##5
 
-function heightoftree(tree,counterleft=0,counterright=0){
+/* function heightoftree(tree,counterleft=0,counterright=0){
     let counterright=0;
     let counterleft=0;
     if(!tree.left){
@@ -132,7 +132,7 @@ function heightoftree(tree,counterleft=0,counterright=0){
     }else if(tree.left){
         return heightoftree(tree.left);
     }
-}
+} */
 //##6
 function isitaBST(tree){
     const root= tree.key;
@@ -178,9 +178,26 @@ function checkBalance(tree,height=1){
     }
     return true
 }
-//##9
-//function checkIdentical(tree1,tree2){}
+//##9//2 arrays O(n*k)
+const a=[3, 5, 4, 6, 1, 0, 2];
+const b=[3, 1, 5, 2, 4, 6, 0];
 
+function checkIdentical(arr1,arr2){
+    for(let i=0;i<arr1.length;i++){
+        const check=arr2.includes(arr1[i]);
+        if(!check){
+            return false;
+        }
+    }
+    for(let j=0;j<arr2.length;j++){
+        const check2=arr1.includes(arr2[j]);
+        if(!check2){
+            return false;
+        }
+    }
+    return true;
+}
+//console.log(checkIdentical(a,b));
 
 
 
@@ -211,4 +228,4 @@ function Main(){
     BST2.insert('N');
     console.log(BST2);//by alpahbetical number
 }
-Main();
+//Main();
