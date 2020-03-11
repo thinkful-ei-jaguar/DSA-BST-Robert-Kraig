@@ -112,27 +112,25 @@ class BinarySearchTree{
 } */
 //should retrun all values to the left the its own value then goes to the right for the rest of the values,
 //return everything in order
-//##5
 
-/* function heightoftree(tree,counterleft=0,counterright=0){
-    let counterright=0;
-    let counterleft=0;
-    if(!tree.left){
-        return counterleft;
-    }
-    if(!tree.right){
-        return counterright
-    }
-    if(tree.right || tree.left){
-        counterright++;
-        counterleft++;
-    }
-    else if(tree.right){
-        return heightoftree(tree.right);
-    }else if(tree.left){
-        return heightoftree(tree.left);
-    }
-} */
+
+
+
+//##5 
+function heightOfTree(node,height=0){
+if(!node){
+    return height-1;
+}
+const left= heightOfTree(node.left,height+1)
+const right = heightOfTree(node.right,height+1)
+if(left>right){
+    return left
+}
+else{
+    return right
+}
+}
+
 //##6
 function isitaBST(tree){
     const root= tree.key;
@@ -211,21 +209,23 @@ function Main(){
     BST.insert(2);
     BST.insert(5);
     BST.insert(7);
-    console.log(BST);//by the insert order
+    //console.log(BST);//by the insert order
     //console.log(heightoftree(BST));
-    const BST2 =new BinarySearchTree();
-    BST2.insert('E');
-    BST2.insert('A');
-    BST2.insert('S');
-    BST2.insert('Y');
-    BST2.insert('Q');
-    BST2.insert('U');
-    BST2.insert('E');
-    BST2.insert('S');
-    BST2.insert('T');
-    BST2.insert('I');
-    BST2.insert('O');
-    BST2.insert('N');
-    console.log(BST2);//by alpahbetical number
+    // const BST2 =new BinarySearchTree();
+    // BST2.insert('E');
+    // BST2.insert('A');
+    // BST2.insert('S');
+    // BST2.insert('Y');
+    // BST2.insert('Q');
+    // BST2.insert('U');
+    // BST2.insert('E');
+    // BST2.insert('S');
+    // BST2.insert('T');
+    // BST2.insert('I');
+    // BST2.insert('O');
+    // BST2.insert('N');
+    // console.log(BST2);//by alpahbetical number
+    result= heightOfTree(BST)
+    console.log(result)
 }
-//Main();
+Main();
